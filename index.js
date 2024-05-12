@@ -31,13 +31,13 @@ async function run() {
     const database = client.db("Halal-Jobs");
     const jobCollection = database.collection("Jobs");
 
-    app.get("/Jobs", async (req, res) => {
+    app.get("/jobs", async (req, res) => {
       const cursor = jobCollection.find();
       const result = await cursor.toArray();
       res.send(result);
     });
 
-    app.post("/Jobs", async (req, res) => {
+    app.post("/jobs", async (req, res) => {
       const job = req.body;
       console.log("new user", job);
       // For Sending this data to MongoDB
@@ -45,7 +45,7 @@ async function run() {
       res.send(result);
     });
 
-    app.delete("/Jobs/:id", async (req, res) => {
+    app.delete("/jobs/:id", async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
       const result = await jobCollection.deleteOne(query);
