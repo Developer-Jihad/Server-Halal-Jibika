@@ -4,7 +4,7 @@ const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 require("dotenv").config();
 
 const app = express();
-const PORT = process.env.PORT || 9000;
+const PORT = process.env.PORT || 7000;
 
 // Connect to Middlewares
 app.use(cors());
@@ -28,8 +28,8 @@ async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
-    const database = client.db("Halal-Jobs");
-    const jobCollection = database.collection("Jobs");
+    const database = client.db("halalJobs");
+    const jobCollection = database.collection("jobs");
 
     app.get("/jobs", async (req, res) => {
       const cursor = jobCollection.find();
