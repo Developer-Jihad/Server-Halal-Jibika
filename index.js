@@ -10,8 +10,6 @@ const PORT = process.env.PORT || 7000;
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (req, res) => res.send("Express on Vercel"));
-
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.szoaovn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
 console.log(uri);
@@ -82,6 +80,8 @@ async function run() {
   }
 }
 run().catch(console.dir);
+
+app.get("/", (req, res) => res.send("Express on Vercel"));
 
 // Start the server
 app.listen(PORT, () => {
